@@ -1,7 +1,21 @@
+---
+import Nav from "./Nav.astro";
+---
+
 <section class="m-20 mb-2">
-    <header class="flex flex-row justify-between">
-        <div>Logo</div>
-        <div>Menus</div>
-        <div>social</div>
-    </header>
-</section>  
+  <header class="flex flex-row justify-between">
+    <div class="flex flex-row items-center">
+      <div class="mr-6">
+        <a href="/" class="text-2xl"
+          ><span class="font-semibold text-slate-800">SantHilari/</span><span
+            class=" text-emerald-500 font-semibold">Link</span
+          >
+        </a>
+      </div>
+      <div>
+        <Nav />
+      </div>
+    </div>
+    <div>social</div>
+  </header>
+</section>
