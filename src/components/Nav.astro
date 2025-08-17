@@ -1,6 +1,26 @@
+---
+const menuitems = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "Noticias",
+    path: "/",
+  },
+  {
+    title: "contacto",
+    path: "/",
+  },
+];
+---
 
-  <div class="flex flex-row space-x-2 font-bold text-2xl">
-    <h1>Home</h1>
-    <h1>Noticias</h1>
-    <h1>Contacto</h1>
-  </div>
+<div class="flex flex-row font-semibold text-xl">
+  <ul class="flex space-x-6">
+    {menuitems.map((item) => (
+      <li>
+        <a href={item.path}>{item.title}</a>
+      </li>
+    ))}
+  </ul>
+</div>
