@@ -2,13 +2,13 @@
 import Nav from "./Nav.astro";
 ---
 
-<section class="m-20 mt-9 mb-0">
-  <header class="flex flex-row justify-between">
-    <div class="flex flex-row items-center">
-      <div class="mr-6 border-r-3">
-        <a href="/" class="text-xl m-2"
+<section class="h-5 w-auto m-7 mb-15 sm:m-4 sm:mx-20">
+  <header class="flex flex-row xl:justify-between justify-center">
+    <div class="flex flex-col h-5 sm:flex-row items-center gap-2">
+      <div class=" sm:p-3 xl:border-r-2">
+        <a href="/" class="text-xl"
           ><span class="font-semibold text-slate-800">SantHilari/</span><span
-            class=" text-emerald-500 font-semibold">Link</span
+            class="text-emerald-500 font-semibold">Link</span
           >
         </a>
       </div>
@@ -16,6 +16,6 @@ import Nav from "./Nav.astro";
         <Nav />
       </div>
     </div>
-    <div>social</div>
+    <div class="hidden xl:block">social</div>
   </header>
 </section>
