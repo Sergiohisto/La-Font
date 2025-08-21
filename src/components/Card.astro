@@ -2,33 +2,40 @@
 // src/components/Card.astro
 // Importamos la imagen si el campo es de tipo 'image'
 // Para usar la imagen como una propiedad, necesitas especificar el tipo de dato
-import type { ImageMetadata } from 'astro';
+import type { ImageMetadata } from "astro";
+import { Image } from 'astro:assets';
 
 export interface Props {
   url: string;
   title: string;
   description: string;
   // La imagen ahora es opcional
-  image?: ImageMetadata;
+  image: ImageMetadata;
   author?: string;
+  index: number;
 }
 
-const { url, title, description, image, author } = Astro.props;
+const { url, title, description, image, author, index} = Astro.props;
+
+const isEven = index % 2 === 0;
+
+const imageOrderClass = isEven ? 'order-1' : 'order-2';
+const textOrderClass = isEven ? 'order-2' : 'order-1';
 ---
 
-<a href={url} class="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-  <article class="bg-white">
-    {image && (
-      <img
-        src={image.src}
-        alt={`Imagen para ${title}`}
-        class="w-full h-48 object-cover"
-      />
-    )}
-    <div class="p-6">
+<a href={url} class="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 bg-white">
+  <article class="flex flex-col sm:flex-row items-stretch">
+    <div class={`p-6 sm:w-1/2 flex flex-col justify-center ${textOrderClass}`}>
       <h2 class="text-2xl font-bold text-gray-800 mb-2">{title}</h2>
-      <p class="text-gray-600 mb-4">{description}</p>
-      {author && <p class="text-sm text-gray-500">Por {author}</p>}
+      <p class="text-gray-600 mb-4 text-sm leading-relaxed">{description}</p>
+    </div>
+
+    <div class={`sm:w-1/2 flex-shrink-0 ${imageOrderClass}`}>
+      <Image 
+        src={image} 
+        alt={`Imagen para ${title}`}
+        class="w-full h-48 sm:h-full object-cover"
+      />
     </div>
   </article>
 </a>

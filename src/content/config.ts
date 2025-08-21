@@ -12,6 +12,7 @@ const blogCollection = defineCollection({
     // Para validar imágenes locales en frontmatter
     image: image().optional(), 
     tags: z.array(z.string()).default([]),
+    
   }),
 });
 
