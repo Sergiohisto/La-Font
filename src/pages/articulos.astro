@@ -14,21 +14,24 @@ const allPosts = await getCollection("blog");
 // Opcional: Ordena los posts por fecha, del más reciente al más antiguo
 allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const latestTwoPosts = allPosts.filter(post => post.data.image).slice(0, 2);
+const latestTwoPosts = allPosts.filter((post) => post.data.image).slice(0, 2);
 ---
 
 <Layout pageTitle={pageTitle}>
-  <section class="grid grid-cols-1 gap-6 justify-center items-center m-4 lg:m-20">
+  <section
+    class="grid grid-cols-1 gap-6 justify-center items-center m-4 lg:mt-10 lg:m-20"
+  >
     {
       latestTwoPosts.map((post, index) => (
         <Card
           url={`/blog/${post.slug}`}
           title={post.data.title}
           description={post.data.description}
-           image={post.data.image!}
-           index={index} 
+          image={post.data.image!}
+          index={index}
         />
       ))
     }
   </section>
+  <div class="h-[300px] bg-red-300"></div>
 </Layout>
