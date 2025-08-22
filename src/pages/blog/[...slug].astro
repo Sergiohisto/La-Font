@@ -1,0 +1,46 @@
+---
+// src/pages/blog/[...slug].astro
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+// 1. Usa getStaticPaths para obtener todos los artículos de la colección 'blog'
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// 2. Recibe las props (el artículo) del resultado de getStaticPaths
+const { entry } = Astro.props;
+
+// 3. Usa el contenido del artículo (obtenido de 'entry')
+const { Content } = await entry.render();
+---
+
+<Layout pageTitle={entry.data.title}>
+  <article class="m-5 lg:m-50 lg:mt-10">
+    <header class="">
+      <h1 class="text-4xl text lg:text-5xl font-bold mb-2">{entry.data.title}</h1>
+      <time class=" text-gray-500"
+        >{entry.data.date.toLocaleDateString()}</time
+      >
+    </header>
+    <div class="mt-4 text-lg">
+      <Content />
+    </div>
+   <div class="flex justify-center">
+     {
+      entry.data.image && (
+        <Image
+          src={entry.data.image}
+          alt={`Imagen para ${entry.data.title}`}
+          class="w-[900px] h-auto rounded-lg my-6 object-cover"
+        />
+      )
+    }
+   </div>
+  </article>
+</Layout>
