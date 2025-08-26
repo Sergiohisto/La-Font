@@ -1,0 +1,39 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  url: string;
+  title: string;
+  description: string;
+  image: ImageMetadata;
+}
+
+const { url, title, description, image } = Astro.props;
+---
+
+<a
+  href={url}
+  class="block shadow-lg transition-shadow duration-300 transform hove-translate-y-1"
+>
+  <article class="flex flex-col">
+    <h2 class=" text-black text-2xl text-center sm:text-3xl font-bold mb-4 rozha">
+      {title}
+    </h2>
+    <div class="flex-shrink-0">
+      <Image
+        src={image}
+        alt={`Imagen para ${title}`}
+        class="w-full h-[300px] lg:h-[450px] object-cover"
+      />
+    </div>
+
+    <div class="p-4 flex flex-col justify-between h-full">
+      <p
+        class="text-gray-900 mb-4 text-[18px] lg:text-lg text-justify leading-7 sm:columns-2"
+      >
+        {description}
+      </p>
+    </div>
+  </article>
+</a>

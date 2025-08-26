@@ -1,2 +1,35 @@
+---
+// Por ejemplo, en src/pages/index.astro o una página nueva
+import CardVertical from "../components/CardVertical.astro";
+import { getCollection } from "astro:content";
+// Obtén todas las entradas de la colección
+const allPosts = await getCollection("blog");
+// Ordena por fecha de la más reciente a la más antigua
+allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+// Obtiene solo los 4 primeros (más recientes)
+const latestFourPosts = allPosts.slice(0, 4);
+---
 
+<section class="container mx-auto py-8">
+  <div class="flex gap-4 overflow-x-scroll snap-x snap-mandatory">
+    {
+      latestFourPosts.map((post) => (
+        <div class="w-full flex-shrink-0 snap-center">
+          <CardVertical
+            url={`/blog/${post.slug}`}
+            title={post.data.title}
+            description={post.data.description}
+            image={post.data.image!}
+          />
+        </div>
+      ))
+    }
+  </div>
+   <div class="flex justify-center gap-2 mb-4">
+    <div class="w-2 h-2 rounded-full bg-gray-400"></div>
+    <div class="w-2 h-2 rounded-full bg-gray-800"></div>
+    <div class="w-2 h-2 rounded-full bg-gray-400"></div>
+    <div class="w-2 h-2 rounded-full bg-gray-400"></div>
+  </div>
+</section>
 

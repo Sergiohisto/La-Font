@@ -28,13 +28,13 @@ const textOrderClass = isEven ? "order-2" : "order-1";
   <article class="flex flex-col sm:flex-row items-stretch">
     <div class={`p-1 sm:p-4 sm:w-1/2 flex flex-col  ${textOrderClass}`}>
       <h2
-        class="text-2xl text-center sm:text-left sm:text-3xl font-bold text-gray-800 mb-2"
+        class="text-2xl text-center sm:text-left sm:text-3xl font-bold text-black"
       >
         {title}
       </h2>
       {
         paragraphs.map((paragraph) => (
-          <p class="mb-4 text-[18px] lg:text-lg text-justify leading-7">
+          <p class="mb-4 text-[18px] lg:text-lg text-justify leading-7 text-gray-900">
             {paragraph}
           </p>
         ))
