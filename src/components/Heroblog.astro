@@ -11,10 +11,20 @@ const latestFourPosts = allPosts.slice(0, 4);
 ---
 
 <section class="container mx-auto py-8">
-  <div class="flex gap-4 overflow-x-scroll snap-x snap-mandatory">
+  <div id="carousel-dots" class="flex justify-center gap-2 mt-0">
     {
-      latestFourPosts.map((post) => (
-        <div class="w-full flex-shrink-0 snap-center">
+      latestFourPosts.map((_, index) => (
+        <button class="w-2 h-2 rounded-full bg-gray-400" data-index={index} />
+      ))
+    }
+  </div>
+  <div
+    id="carousel-container"
+    class="flex gap-4 overflow-x-scroll snap-x snap-mandatory scroll-smooth"
+  >
+    {
+      latestFourPosts.map((post, index) => (
+        <div class="w-full flex-shrink-0 snap-center" data-slide-index={index}>
           <CardVertical
             url={`/blog/${post.slug}`}
             title={post.data.title}
@@ -25,11 +35,56 @@ const latestFourPosts = allPosts.slice(0, 4);
       ))
     }
   </div>
-   <div class="flex justify-center gap-2 mb-4">
-    <div class="w-2 h-2 rounded-full bg-gray-400"></div>
-    <div class="w-2 h-2 rounded-full bg-gray-800"></div>
-    <div class="w-2 h-2 rounded-full bg-gray-400"></div>
-    <div class="w-2 h-2 rounded-full bg-gray-400"></div>
-  </div>
 </section>
 
+<script>
+  // Asegúrate de que el script se ejecute solo después de que el DOM esté completamente cargado.
+  document.addEventListener("DOMContentLoaded", () => {
+    // Obtén una referencia a los elementos del carrusel.
+    const carousel = document.getElementById("carousel-container");
+    const dotsContainer = document.getElementById("carousel-dots");
+
+    // Maneja el caso en el que los elementos no se encuentren.
+    if (!carousel || !dotsContainer) {
+      console.error(
+        "El carrusel o el contenedor de puntos no se encontraron. Asegúrate de que los ID sean correctos."
+      );
+      return;
+    }
+
+    // Obtén todos los botones de los puntos.
+    const dots = dotsContainer.querySelectorAll("button");
+
+    /**
+     * Actualiza el estado visual de los puntos de navegación.
+     * @param {number} currentIndex El índice del punto que debe estar activo.
+     */
+    const updateDots = (currentIndex: number) => {
+      dots.forEach((dot) => {
+        dot.classList.remove("bg-gray-800");
+        dot.classList.add("bg-gray-400");
+      });
+      // El punto actual se ilumina con un color más oscuro.
+      dots[currentIndex].classList.remove("bg-gray-400");
+      dots[currentIndex].classList.add("bg-gray-800");
+    };
+
+    // Escucha el evento de desplazamiento del carrusel.
+    carousel.addEventListener("scroll", () => {
+      // Calcula el índice de la tarjeta visible actual.
+      const index = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+      updateDots(index);
+    });
+
+    // Añade un evento de clic a cada botón para desplazar el carrusel.
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        // Desplaza el carrusel al ancho de la tarjeta correspondiente.
+        carousel.scrollLeft = carousel.offsetWidth * index;
+      });
+    });
+
+    // Llama a la función de actualización inicial para marcar el primer punto.
+    updateDots(0);
+  });
+</script>
