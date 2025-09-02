@@ -11,10 +11,10 @@ const latestFourPosts = allPosts.slice(0, 4);
 ---
 
 <section class="container mx-auto py-8">
-  <div id="carousel-dots" class="flex justify-center gap-2 mt-0">
+  <div id="carousel-dots" class="flex justify-center gap-2 mb-4">
     {
       latestFourPosts.map((_, index) => (
-        <button class="w-2 h-2 rounded-full bg-gray-400" data-index={index} />
+        <button class="w-2 h-2 rounded-full bg-gray-400 cursor-pointer" data-index={index} />
       ))
     }
   </div>
