@@ -20,13 +20,13 @@ const paragraphs = description.split("\n");
 
 const isEven = index % 2 === 0;
 
-const imageOrderClass = isEven ? "order-1" : "order-2";
-const textOrderClass = isEven ? "order-2" : "order-1";
+const imageOrderClass = isEven ? "sm:order-1" : "sm:order-2";
+const textOrderClass = isEven ? "sm:order-2" : "sm:order-1";
 ---
 
 <a href={url} class="block rounded-lg">
   <article class="flex flex-col sm:flex-row items-stretch">
-    <div class={`p-1 sm:p-4 sm:w-1/2 flex flex-col  ${textOrderClass}`}>
+    <div class={`p-1 sm:p-4 sm:w-1/2 flex flex-col ${textOrderClass}`}>
       <h2
         class="text-2xl text-center sm:text-left sm:text-3xl font-bold text-black rozha"
       >
@@ -34,7 +34,7 @@ const textOrderClass = isEven ? "order-2" : "order-1";
       </h2>
       {
         paragraphs.map((paragraph) => (
-          <p class="mb-4 text-[18px] lg:text-lg text-justify leading-7 text-gray-900">
+          <p class="mb-4 text-[18px] lg:text-lg text-justify leading-7 text-gray-900 ">
             {paragraph}
           </p>
         ))
@@ -45,7 +45,7 @@ const textOrderClass = isEven ? "order-2" : "order-1";
       <Image
         src={image}
         alt={`Imagen para ${title}`}
-        class="w-full h-48 sm:h-[400px] object-cover"
+        class="w-full h-48 sm:h-[350px] hm object-cover"
       />
     </div>
   </article>
