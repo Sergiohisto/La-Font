@@ -1,6 +1,7 @@
 ---
 title: "Sant Hilari Sacalm: Un Tresor Amagat al Cor de les Guilleries"
 description: "Al cor de la comarca de la Selva, abraçat per la majestuositat del massís de les Guilleries, s’alça Sant Hilari Sacalm. Més que un simple municipi, és un remans de pau, un edèn natural i un crisol de tradicions que captiven a tot aquell que el visita. A “La Font” et convidem a descobrir els encants que fan d’aquest racó català una destinació inoblidable."
+author: Sergio Luis
 date: 2025-09-02
 image: "./SantHilari3.webp"
 tags: ["astro", "tutorial", "colecciones"]

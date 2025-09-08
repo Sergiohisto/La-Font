@@ -8,6 +8,7 @@ const blogCollection = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
+    author: z.string(),
     date: z.date(),
     // Para validar imágenes locales en frontmatter
     image: image().optional(), 

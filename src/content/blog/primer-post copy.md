@@ -4,6 +4,7 @@ description: "¡El clima y su consecuencia, prende uno un cigarro y se ahoga en 
 
  El frío entra en los huesos y duelen las costillas, en nada se parece a las frías mañanas de San Juan Nepomuceno; cientos de pájaros cantan en las mañanas radiantes de poeta Diógenes Arrieta o de vez en cuando un recuerdo del escritor Roberto Osorio Puello, todos coterráneos míos,"
 
+author: Sergio Luis
 date: 2025-08-20
 image: "./SantHilari2.webp"
 tags: ["astro", "tutorial", "colecciones"]
