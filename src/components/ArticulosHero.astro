@@ -14,13 +14,13 @@ const allPosts = await getCollection("blog");
 // Opcional: Ordena los posts por fecha, del más reciente al más antiguo
 allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const latestTwoPosts = allPosts.filter((post) => post.data.image).slice(0, 4);
+const latestTwoPosts = allPosts.filter((post) => post.data.image).slice(0, 2);
 ---
 
   <section
-    class="grid grid-cols-1 gap-6 justify-center items-center m-4 lg:mt-10 lg:m-20"
+    class="grid grid-cols-1 gap-10 justify-center items-center m-4 lg:mt-10 lg:m-20"
   >
-  <h1 class="text-5xl rozha text-center mb-3">Ultima edición</h1>
+  <h1 class="text-5xl rozha text-center mb-3">Última edición</h1>
     {
       latestTwoPosts.map((post, index) => (
         <Card

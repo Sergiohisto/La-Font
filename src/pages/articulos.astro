@@ -15,14 +15,15 @@ const allPosts = await getCollection("blog");
 allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const latestTwoPosts = allPosts.filter((post) => post.data.image).slice(0, 4);
+const filteredPosts = allPosts.filter((post) => post.data.image);
 ---
 
 <Layout pageTitle={pageTitle}>
   <section
-    class="grid grid-cols-1 gap-6 justify-center items-center m-4 lg:mt-10 lg:m-20"
+    class="grid grid-cols-1 gap-10 justify-center items-center m-4 lg:mt-10 lg:m-20"
   >
     {
-      latestTwoPosts.map((post, index) => (
+      filteredPosts.map((post, index) => (
         <Card
           url={`/blog/${post.slug}`}
           title={post.data.title}
