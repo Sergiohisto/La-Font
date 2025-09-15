@@ -3,6 +3,8 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import Social from "../../components/Social.astro";
+import ShareButtons from "../../components/ShareButtons.astro";
 
 // 1. Usa getStaticPaths para obtener todos los artículos de la colección 'blog'
 export async function getStaticPaths() {
@@ -18,30 +20,35 @@ const { entry } = Astro.props;
 
 // 3. Usa el contenido del artículo (obtenido de 'entry')
 const { Content } = await entry.render();
+
+const postUrl = new URL(Astro.request.url).href;
 ---
 
 <Layout pageTitle={entry.data.title}>
   <article class="m-5 lg:m-50 lg:mt-10">
     <header class="">
-      <h1 class="text-4xl text lg:text-5xl font-bold mb-2">{entry.data.title}</h1>
-     <h3 class="text-xl text lg:text-xl font-medium mb-2">{entry.data.author}</h3>
-      <time class=" text-gray-500"
-        >{entry.data.date.toLocaleDateString()}</time
-      >
+      <h1 class="text-4xl text lg:text-5xl font-bold mb-2">
+        {entry.data.title}
+      </h1>
+      <h3 class="text-xl text lg:text-xl font-medium mb-2">
+        {entry.data.author}
+      </h3>
+      <time class="text-gray-500">{entry.data.date.toLocaleDateString()}</time>
+      <ShareButtons url={postUrl} title={entry.data.title} />
     </header>
     <div class="mt-4 text-lg">
       <Content />
     </div>
-   <div class="flex justify-center">
-     {
-      entry.data.image && (
-        <Image
-          src={entry.data.image}
-          alt={`Imagen para ${entry.data.title}`}
-          class="w-[900px] h-auto rounded-lg my-6 object-cover"
-        />
-      )
-    }
-   </div>
+    <div class="flex justify-center">
+      {
+        entry.data.image && (
+          <Image
+            src={entry.data.image}
+            alt={`Imagen para ${entry.data.title}`}
+            class="w-[900px] h-auto rounded-lg my-6 object-cover"
+          />
+        )
+      }
+    </div>
   </article>
 </Layout>

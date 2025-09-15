@@ -8,5 +8,7 @@ image: "./SantHilari1.jpg"
 tags: ["astro", "tutorial", "colecciones"]
 ---
 
+
+
 ¡Bienvenido a mi blog! Este es el contenido principal de mi artículo.
 Puedes usar Markdown normal aquí para **formatear** tu texto.
