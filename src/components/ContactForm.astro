@@ -1,0 +1,63 @@
+---
+import Button from "./Button.astro"
+---
+
+<form id="form" class="needs-validation" novalidate>
+  <div class="mb-5">
+    <input
+      type="text"
+      placeholder="Nom complet"
+      required
+      name="name"
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-hidden focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+    />
+  </div>
+
+  <div class="mb-5">
+    <input
+      type="email"
+      placeholder="Correu Electrònic"
+      name="email"
+      required
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-hidden focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+    />
+  </div>
+
+  <div class="mb-3">
+    <textarea
+      name="message"
+      required
+      placeholder="El teu missatge"
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-hidden h-36 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+    ></textarea>
+  </div>
+
+  <Button class="cursor-pointer" type="submit" size="lg" block
+    >Enviar por WhatsApp</Button
+  >
+</form>
+
+<script is:inline>
+  const form = document.getElementById("form");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    form.classList.add("was-validated");
+
+    if (!form.checkValidity()) {
+      form.querySelector(":invalid").focus();
+      return;
+    }
+
+    const name = form.name.value;
+    const email = form.email.value;
+    const message = form.message.value;
+
+    const phone = "34612219007"; // Cambia por tu número con lada y sin +
+    const text = `Hola, soy ${name}, mi correo es ${email}. Mensaje: ${message}`;
+    const encodedText = encodeURIComponent(text);
+    const url = `https://wa.me/${phone}?text=${encodedText}`;
+
+    window.open(url, "_blank"); // Abre WhatsApp en nueva pestaña
+  });
+</script>
