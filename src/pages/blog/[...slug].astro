@@ -3,7 +3,6 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import Social from "../../components/Social.astro";
 import ShareButtons from "../../components/ShareButtons.astro";
 
 // 1. Usa getStaticPaths para obtener todos los artículos de la colección 'blog'
@@ -25,30 +24,42 @@ const postUrl = new URL(Astro.request.url).href;
 ---
 
 <Layout pageTitle={entry.data.title}>
-  <article class="m-5 lg:m-50 lg:mt-10">
-    <header class="">
-      <h1 class="text-4xl text lg:text-5xl font-bold mb-2 rozha">
-        {entry.data.title}
-      </h1>
-      <h3 class="text-xl text lg:text-xl font-medium mb-2">
-        {entry.data.author}
-      </h3>
-      <time class="text-gray-500">{entry.data.date.toLocaleDateString()}</time>
-      <ShareButtons url={postUrl} title={entry.data.title} />
+  <article class="max-w-[1200px] mx-auto px-5 py-10">
+    <header
+      class="grid grid-cols-1 lg:grid-cols-2 items-start border-b-2 pb-10 mb-10"
+    >
+      <div class="flex flex-col justify-center h-full">
+        <div class="mb-4">
+          <span
+            class="uppercase text-xs font-bold tracking-widest bg-black text-white px-2 py-1"
+          >
+            {entry.data.category || "Opinió"}
+          </span>
+        </div>
+        <h1 class="text-4xl lg:text-6xl font-bold mb-4 rozha leading-tight">
+          {entry.data.title}
+        </h1>
+        <h3 class="text-xl text lg:text-xl font-medium mb-2">
+          {entry.data.author}
+        </h3>
+        <time class="text-gray-500">{entry.data.date.toLocaleDateString()}</time
+        >
+        <ShareButtons url={postUrl} title={entry.data.title} />
+      </div>
+      <div class="flex justify-center">
+        {
+          entry.data.image && (
+            <Image
+              src={entry.data.image}
+              alt={`Imagen para ${entry.data.title}`}
+              class="w-[900px] h-auto rounded-lg my-6 object-cover"
+            />
+          )
+        }
+      </div>
     </header>
     <div class="mt-4 text-lg">
       <Content />
-    </div>
-    <div class="flex justify-center">
-      {
-        entry.data.image && (
-          <Image
-            src={entry.data.image}
-            alt={`Imagen para ${entry.data.title}`}
-            class="w-[900px] h-auto rounded-lg my-6 object-cover"
-          />
-        )
-      }
     </div>
   </article>
 </Layout>
