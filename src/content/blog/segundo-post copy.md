@@ -6,6 +6,7 @@ author: Sergio Luis
 date: 2025-08-19T10:00:00.000Z
 image: "./SantHilari1.jpg"
 tags: ["astro", "tutorial", "colecciones"]
+category: "opinion"
 ---
 
 

@@ -8,6 +8,7 @@ author: Sergio Luis
 date: 2025-08-20
 image: "./SantHilari2.webp"
 tags: ["astro", "tutorial", "colecciones"]
+category: "articulo"
 ---
 
 Y esto es así, un nombre con quien se sueña, una imagen que se proyecta y tu en medio de este pensamiento, como aquel atrapa sueño que lanza sus tentáculos para abarcar todo. Imaginación en aquelarre y ya no hay salida, retroceder es imposible, entonces del lejano subconsciente llegan versos sutiles, un verso con una idea, una idea que se sustenta de metáforas, dos miradas de fuentes primaria, cuatro cartas de referencia coqueta, y de repente te encuentras al borde del enamoramiento. Sutil pero eficaz. tan eficaz en potencia como un veneno mortífero con consecuencias y todo, acción de enamorar y ser enamorado, mundos paralelos que se destinan al vinculo precoz. 

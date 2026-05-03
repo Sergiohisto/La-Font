@@ -10,6 +10,7 @@ const blogCollection = defineCollection({
     description: z.string(),
     author: z.string(),
     date: z.date(),
+    category: z.string(),
     // Para validar imágenes locales en frontmatter
     image: image().optional(), 
     tags: z.array(z.string()).default([]),

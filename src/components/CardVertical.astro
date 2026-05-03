@@ -14,13 +14,13 @@ const { url, title, description, image } = Astro.props;
 
 <a
   href={url}
-  class="block shadow-lg transition-shadow duration-300 transform hove-translate-y-1"
+  class="block shadow-lg transition-shadow duration-300 transform hover:-translate-y-1"
 >
   <article class="flex flex-col">
-    <h2 class="text-black text-2xl text-center sm:text-3xl font-bold mb-4 rozha">
+    <h2 class="text-black text-2xl text-center sm:text-3xl font-bold mb-4 font-display">
       {title}
     </h2>
-    <div class="flex-shrink-0">
+    <div class="flex-shrink-0 rounded-lg overflow-hidden">
       <Image
         src={image}
         alt={`Imagen para ${title}`}
@@ -30,7 +30,7 @@ const { url, title, description, image } = Astro.props;
 
     <div class="p-4 flex flex-col justify-between h-full">
       <p
-        class="text-gray-900 mb-4 text-[18px] sm:text-[24px] lg:text-lg text-justify leading-7 sm:columns-2"
+        class="text-gray-900 mb-4 text-[18px] sm:text-[20px] lg:text-[22px] text-justify leading-7 sm:columns-2"
       >
         {description}
       </p>

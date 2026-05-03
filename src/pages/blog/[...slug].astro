@@ -36,7 +36,7 @@ const postUrl = new URL(Astro.request.url).href;
             {entry.data.category || "Opinió"}
           </span>
         </div>
-        <h1 class="text-4xl lg:text-6xl font-bold mb-4 rozha leading-tight">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-4 font-display leading-tight">
           {entry.data.title}
         </h1>
         <h3 class="text-xl text lg:text-xl font-medium mb-2">
@@ -58,7 +58,7 @@ const postUrl = new URL(Astro.request.url).href;
         }
       </div>
     </header>
-    <div class="mt-4 text-lg">
+    <div class="mt-4 mx-auto text-[20px]">
       <Content />
     </div>
   </article>

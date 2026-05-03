@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  --color-cream: #f3f1e5;
+  --font-display: "Rozha One", serif;
+}
+
+@utility carousel-dot {
+  @apply w-2 h-2 rounded-full bg-gray-400 cursor-pointer transition-colors;
+}
+
+@utility carousel-dot-active {
+  @apply bg-gray-800;
+}
+
+@utility carousel-slide {
+  @apply w-full flex-shrink-0 snap-center;
+}
+
+html,
+body {
+  background: var(--color-cream);
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
