@@ -10,8 +10,8 @@ allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const latestFourPosts = allPosts.slice(0, 4);
 ---
 
-<section class="container mx-auto py-8 px-4 lg:px-8">
-  <div id="carousel-dots" class="flex justify-center gap-2 mb-4">
+<section class="container mx-auto mb-6 mt-3 sm:py-8 lg:px-8">
+  <div id="carousel-dots" class="flex justify-center gap-2">
     {
       latestFourPosts.map((_, index) => (
         <button class="carousel-dot" data-index={index} />
